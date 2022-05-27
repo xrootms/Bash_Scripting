@@ -1,0 +1,136 @@
+-----------------
+##Check shells##
+-----------------
+ubuntu@ubuntu-VPCEA35FG:~$ cat /etc/shells 
+# /etc/shells: valid login shells
+/bin/sh
+/bin/bash
+/bin/rbash
+/bin/dash
+ubuntu@ubuntu-VPCEA35FG:~$ which bash
+/bin/bash
+
+--------------------------------------------------
+##Create shell file and add executable permision##
+--------------------------------------------------
+
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ touch hello.sh
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ code . ##to open vstodio##
+
+#! /bin/bash
+echo "hello world"
+save
+
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh
+bash: ./hello.sh: Permission denied
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ chmod +x hello.sh 
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ls -ls
+total 12
+4 -rwxrwxr-x 1 ubuntu ubuntu   31 May 27 16:48 hello.sh
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh
+hello world
+
+-----------------------------------
+## using Variables and Comments ##
+-----------------------------------
+
+#! /bin/bash
+# this is comment
+echo "hello world"   # this is also comments
+
+------------------------------------
+Variable- are store some kind of data coud be string data or number.
+there r two types of variables in linux/unix syatems
+
+01- syatem variables (always on capital)
+02- user define variables (gernally in lower case but could be in both 
+cases, variable name should not start with numbers).
+-------------------------------------
+
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ code .
+
+#! /bin/bash
+# this is comment
+echo "hello world"   # this is also comments
+echo $BASH
+echo $BASH_VERSION
+echo $HOME
+echo $PWD
+save
+
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+hello world
+/bin/bash
+5.0.17(1)-release
+/home/ubuntu
+/home/ubuntu/Desktop
+
+-------
+## user difine variable ##
+
+#! /bin/bash
+echo "hello world"
+
+name=Mark
+echo his name is $name
+
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+hello world
+his name is Mark
+------
+
+#! /bin/bash
+echo "hello world"
+name=Mark
+echo his name is $name
+VALUE=10
+echo value #VALUE
+SAVE
+
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+hello world
+his name is Mark
+value 10
+
+--------------------
+##Read User Input##
+--------------------
+
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ code .
+#! /bin/bash
+echo "Enter name : "
+read name
+echo "Entered name : $name"
+save
+
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+Enter name : 
+max
+Entered name : max
+-----
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ code .
+
+#! /bin/bash
+read -p "Enter username : " user_var
+echo "username : $user_var"
+save
+
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+Enter username : max
+username : max
+--------
+
+#! /bin/bash
+read -p "Enter username : " user_var
+echo "username : $user_var"
+read -sp " Enter passwd : " pass_var
+echo
+echo " passwd : $pass_var"
+save
+
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+Enter username : max
+username : max
+ Enter passwd : 
+ passwd : 123
+---------

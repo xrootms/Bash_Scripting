@@ -1,0 +1,253 @@
+---------------------------------------------------------
+ if Statement ( If then , If then else, If elif else)
+---------------------------------------------------------
+Note: string/integer attach to a variable
+{srting variable  like- word=abc }
+{integer variable like- cont=10  }
+--------------------------------------------------------------------
+Integer: a whole number, such as 3 0r 4, but not 3.4 or 4.8
+string: string is any serise of characters like- "hello" or "LKH197".
+--------------------------------------------------------------------
+--------------------
+Integer comparision:
+--------------------
+-eg - is equal to -      if ["$a" -eq "$b"]
+-ne - is not equal to    if ["$a" -ne "$b"]
+-gt - is grater than -             if ["$a" -gt "$b"]
+-ge - is grater than or equal to   if ["$a" -ge "$b"]
+-lt - is less tha                  if ["$a" -lt "$b"]
+-le - is less than or equal to     if ["$a" -le "$b"]
+
+<  -   is less than -                (("$a" < "$b"))
+<= -   is less than 0r equal to -    (("$a" <= "$b"))
+>  -   is grater than -              (("$a" > ""$b))
+>= -   is grater than or equal to -  (("$a" >= "$b"))
+
+note: use single square brakets.[], when Use comparision oprater with integers comparisions
+then
+note: use dubble pranthesess (()), when Use angels brakets on integers comparisions
+-----------------------------------------------------------------------
+------------------
+String comparision
+------------------
+=  - is equal to if ["$a" = "$b"]
+== - is equal to if ["$a" == "$b"]
+!= - is not equal to ["$a" != "$b"]
+
+< - is less than, in ASCII alphabetical order - if [["$a" < "$b"]]
+> - is grater than, in ASCII alphabetical order - if [["$a" > "$b"]]
+-z - string is null than is has zero length
+-----------------------------------------------------------------------
+Integer comparision:
+
+#! /bin/bash
+
+ count=10  #declare a variable
+ 
+ if [ $count -eq 9 ]
+ then
+   echo "condition is true"
+ fi
+ save
+ 
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ 
+
+-----
+#! /bin/bash
+
+ count=10  
+ if [ $count -eq 10 ]
+ then
+   echo "condition is true"
+ fi
+ save
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+condition is true
+------------------
+#! /bin/bash
+
+ count=10  
+ if [ $count -ne 9 ]
+ then
+   echo "condition is true"
+ fi
+ save
+ ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+condition is true
+-----------------
+
+#! /bin/bash
+
+ count=10  
+ 
+ if [ $count -gt 9 ]
+ then
+   echo "condition is true"
+ fi
+ save
+ ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+condition is true
+
+------------------
+#! /bin/bash
+
+ count=10  
+ if (( $cont > 9 ))
+ then
+   echo "condition is true"
+ fi
+
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+condition is true
+-------
+#! /bin/bash
+
+ count=10  
+ if (( $count >= 9 ))
+ then
+   echo "condition is true"
+ fi
+ ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+condition is true
+-------------------
+String comparision:
+-------------------
+
+#! /bin/bash
+
+ word=abc 
+  
+ if [ $word == abc ]
+ then
+   echo "condition is true"
+ fi
+save
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+condition is true
+
+-------
+#! /bin/bash
+
+ word=abc  
+ if [ $word == abcccc ]
+ then
+   echo "condition is true"
+ fi
+ save
+ ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ 
+--------------------
+
+#! /bin/bash
+
+ word=abc  
+ if [ $word != abcccc ]
+ then
+   echo "condition is true"
+ fi
+ save
+ ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+condition is true
+-----------
+#! /bin/bash
+
+ word=a  
+ 
+ if [[ $word < b ]]
+ then
+   echo "condition is true"
+ fi
+ save
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+condition is true
+-----------------------
+if with else conditions:
+-----------------------
+
+#! /bin/bash
+
+ word=a  
+
+ if [ $word == b ]
+ then
+   echo "condition is true"
+ else 
+   echo "condition is false"
+ fi
+ save
+ 
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+condition is false
+-----------
+if with elif and else conditions:
+-----------------------
+#! /bin/bash
+
+ word=a  
+
+ if [ $word == b ]
+ then
+   echo "condition 1 is true"
+
+ elif [ $word == a ]
+ then
+    echo "condition 2 is true"
+
+ else 
+   echo "condition is false"
+ fi
+save
+ubuntu@ubuntu-VPCEA35FG:~/Desktop$ ./hello.sh 
+condition 2 is true
+-------------------------------------------------
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+]

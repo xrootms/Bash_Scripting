@@ -1,0 +1,155 @@
+-----------------------
+## file test oprater ##
+-----------------------
+#!/bin/bash
+
+if [ -e /var/log/apache2/access.log ]     ## check -e existed or not## 
+then
+echo "file found"
+
+else
+echo "file not found"
+fi
+save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+file found
+
+--------------------------
+#! /bin/bash
+echo -e "Enter the name of the file : \c" #(-e-enable, \c-keep the curser same line)#
+read file_name
+
+if [ -e $file_name ]     ## check -e existed or notfile or dir both (-f for onle file)## 
+then
+echo "$file_name found"
+
+else
+echo "" $file_name not found
+fi
+
+save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Enter the name of the file : test
+ test not found
+ubuntu@sony-vaio:~/Desktop$ touch test
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Enter the name of the file : test
+test found
+--------------------------------------
+ubuntu@sony-vaio:~/Desktop$ ls
+5.Docker_Notes  bash_class  hello.sh  linux2  playbook.yaml  test
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Enter the name of the file : bash_class
+bash_class found
+
+-----------------------------------------
+Basically two types of file
+Charecter special file- normal file contain some text/data.
+Block special files- music file, images files, video files.
+[for Charecter_files use "-c"]
+[for Block_files use "-b"]
+[check file is empty or not "-s"] (first check its full) othewise empty check.
+---------------------------------------------
+
+#!/bin/bash
+
+echo -e  "Enter the name of the file : \c"
+read file_name
+
+if [ -s $file_name ]              ## check file is empty or not "-s"##
+then
+ echo "$file_name file is not empty"
+
+else
+ echo "$file_name file is empty"
+fi 
+save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Enter the name of the file : test
+test file is empty
+ubuntu@sony-vaio:~/Desktop$ cat >> test
+welcome to ranchi.
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Enter the name of the file : test
+test file is not empty
+---------------------------------------------------
+## how to append data in text files ##
+
+#! /bin/bash
+echo -e "Enter the name of the file : \c" 
+read file_name
+
+if [ -f $file_name ]     
+then
+echo "$file_name found"
+
+    if [ -w $file_name ]     # -w check file hav write permition or not #
+    then
+    echo "type some data. to qiut press cnt+d" 
+    cat >> $file_name
+    else
+    echo "the file do not write permitions"
+    fi
+
+else
+echo "" $file_name not found
+fi
+save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Enter the name of the file : test
+test found
+type some data. to qiut press cnt+d
+feelig happy
+ubuntu@sony-vaio:~/Desktop$ cat test
+welcome to ranchi.
+feelig happy
+ubuntu@sony-vaio:~/Desktop$ ls -l
+total 28
+-rw-rw-r-- 1 ubuntu ubuntu 1989 May 30 15:03 06_bash_class
+drwxrwxr-x 3 ubuntu ubuntu 4096 May 17 04:43 5.Docker_Notes
+drwxrwxr-x 2 ubuntu ubuntu 4096 May 29 17:30 bash_class
+-rwxrwxr-x 1 ubuntu ubuntu  378 May 30 16:20 hello.sh
+-rw-rw-r-- 1 ubuntu ubuntu  869 May 30 01:44 linux2
+-rw-rw-r-- 1 ubuntu ubuntu   92 May 12 22:43 playbook.yaml
+-rw-rw-r-- 1 ubuntu ubuntu   32 May 30 16:21 test
+ubuntu@sony-vaio:~/Desktop$ chmod -w test 
+ubuntu@sony-vaio:~/Desktop$ ls -l
+total 28
+-rw-rw-r-- 1 ubuntu ubuntu 1989 May 30 15:03 06_bash_class
+drwxrwxr-x 3 ubuntu ubuntu 4096 May 17 04:43 5.Docker_Notes
+drwxrwxr-x 2 ubuntu ubuntu 4096 May 29 17:30 bash_class
+-rwxrwxr-x 1 ubuntu ubuntu  378 May 30 16:20 hello.sh
+-rw-rw-r-- 1 ubuntu ubuntu  869 May 30 01:44 linux2
+-rw-rw-r-- 1 ubuntu ubuntu   92 May 12 22:43 playbook.yaml
+-r--r--r-- 1 ubuntu ubuntu   32 May 30 16:21 test
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Enter the name of the file : test
+test found
+the file do not write permitions
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Enter the name of the file : test2
+ test2 not found
+--------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,129 @@
+# Logical AND oprater
+----------------------
+#! /bin/bash
+
+age=25
+
+if [ $age -gt 18 ] && [ $age -lt 30 ]   ## && oprater checking both condition and 
+then                                    ## only both cond r true then only code executed#
+  echo "valid age"                       
+else
+  echo "age not valid"
+fi
+save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+valid age
+--------------------
+
+#! /bin/bash
+
+age=50
+
+if [ $age -gt 18 ] && [ $age -lt 30 ]   ## && oprater checking both condition and 
+then                                    ## only both cond r true then only code executed#
+  echo "valid age"                       
+else
+  echo "age not valid"
+fi
+save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+age not valid
+--------------------------------
+-a " []&&[]' [[ && ]]-- all r same
+--------------------------------
+## Logical 'OR''||' oprater ##
+
+age=60
+
+if [ $age -gt 18 ] || [ $age -lt 30 ]   ## || "or "oprater checking both condition and 
+then                                    ## if any of condition separated by ||  is true then execute code #
+  echo "valid age"                       
+else
+  echo "age not valid"
+fi
+save
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+valid age
+
+-------------------------
+
+age=25
+
+if [ $age -gt 18 ] || [ $age -lt 30 ]   ## || "or "oprater checking both condition and 
+then                                    ## if any of condition separated by ||  is true then execute code #
+  echo "valid age"                       
+else
+  echo "age not valid"
+fi
+save
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+valid age
+-------------------------
+
+age=18
+
+if [ $age -eq 18 ] || [ $age -eq 30 ]   ## || "or "oprater checking both condition and 
+then                                    ## if any of condition separated by ||  is true then execute code #
+  echo "valid age"                       
+else
+  echo "age not valid"
+fi
+save
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+valid age
+------------------------------
+OR oprater -||, [-o], [[ || ]]
+---------------------------------------------------
+--------------------------------
+##perform arithmetic oprations##
+--------------------------------
+
+#! /bin/bash
+
+num1=20
+num2=5
+echo $(( num1 + num2 ))
+
+#save
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+25
+-----
+
+#! /bin/bash
+
+num1=20
+num2=5
+echo $(( num1 + num2 ))
+echo $(( num1 - num2 ))
+echo $(( num1 * num2 ))
+echo $(( num1 / num2 ))
+echo $(( num1 % num2 ))
+#save
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+25
+15
+100
+4
+0
+---------------------------
+---send way-----
+#! /bin/bash
+
+num1=20
+num2=5
+echo $(expr $num1 + $num2 )
+echo $(expr $num1 - $num2 )
+echo $(expr $num1 \* $num2 )
+echo $(expr $num1 / $num2 )
+echo $(expr $num1 % $num2 )
+#save
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+25
+15
+100
+4
+0
+-------------------------
+

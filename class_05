@@ -1,0 +1,124 @@
+##Arthmetic oprations with decimal numbers##
+---------------------------------------------
+
+note: we need to use a spesial too which is "bc"
+$ man bc      ## check "bc" details
+# bc :- Basic calcululater #
+------------------------
+
+#! /bin/bash
+
+num1=20.5
+num2=5
+echo "20.5+5" | bc
+echo "20.5-5" | bc
+echo "20.5*5" | bc
+echo "20.5/5" | bc
+echo "20.5%5" | bc
+#save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+25.5
+15.5
+102.5
+4
+.5
+----
+#! /bin/bash
+
+num1=20.5
+num2=5
+echo "20.5+5" | bc
+echo "20.5-5" | bc
+echo "20.5*5" | bc
+echo "scale=2;20.5/5" | bc  ## always use scale when use division opration ##
+echo "20.5%5" | bc
+#save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+25.5
+15.5
+102.5
+4.10
+.5
+-----
+#! /bin/bash
+
+num1=20.5
+num2=5
+echo "$num1+$num2" | bc
+echo "$num1-$num2" | bc
+echo "$num1*$num2" | bc
+echo "scale=10;$num1/$num2" | bc ## always use scale when use division opration ##
+echo "$num1%$num2" | bc
+#save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+25.5
+15.5
+102.5
+4.1000000000
+.5
+---
+
+#! /bin/bash
+
+num=27
+
+echo "scale=2;sqrt($num)" | bc -l    # -l flag math library #
+save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+5.19
+
+--
+#! /bin/bash
+
+num=4
+
+echo "scale=2;sqrt($num)" | bc -l    # -l flag math library #
+echo "scale=2;3^3" | bc -l 
+save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+2.00
+27
+----
+## man bc  # check options ##
+
+---------------------------------------------------
+## case statement (alternativ of if-else)##
+---------------------------------------------------
+#! /bin/bash
+
+vehicle=$1
+
+case $vehicle in
+      "car" )
+         echo "rent of $vehicle is 100 rupee" ;;
+      "van" )
+         echo "rent of $vehicle is 200 rupee" ;;  
+      "bicycle" )
+         echo "rent of $vehicle is 10 rupee" ;;
+       "truck" )
+         echo "rent of $vehicle is 1000 rupee" ;;
+        * )
+        echo "Unknown vehicle" ;;
+esac
+
+save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Unknown vehicle
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh car
+rent of car is 100 rupee
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh van
+rent of van is 200 rupee
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh bicycle
+rent of bicycle is 10 rupee
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh truck
+rent of truck is 1000 rupee
+ubuntu@sony-vaio:~/Desktop$ 
+---------------------------------------------------------------
+
+

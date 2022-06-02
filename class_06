@@ -1,0 +1,123 @@
+##The case statement Example##
+------------------------------
+
+#! /bin/bash
+
+echo -e "Enter some character : \c"
+read value
+
+case $value in
+  [a-z] )
+    echo "user entered $value a to z" ;;
+  [A-Z] )
+     echo "user entered $value A to Z" ;;
+   [0-9] )
+     echo "user entered $value 0 to 9" ;;
+   ? )
+     echo "user entered $value special character" ;;
+   * )
+     echo "Unknown input" ;;
+esac 
+
+save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Enter some character : f
+user entered f a to z
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Enter some character : K
+user entered K A to Z
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Enter some character : 7
+user entered 7 0 to 9
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Enter some character : &
+user entered & special character
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+Enter some character : ceefvefvev
+Unknown input
+
+
+----------------------------------------------------
+## Array variables | How to use Array in scripting.
+-----------------------------------------------------
+note: 
+Bash support simple one dimensnal array.
+An array is a systematic arrangement of the same type of data. 
+But in Shell script Array is a variable which contains multiple 
+values may be of same type or different type.
+---------------------------------------------------------------
+#! /bin/bash
+
+os=("ubuntu" "window" "kali")   #os is the name of array & ubuntu, window kali r element or index.
+
+echo "${os[@]}"                 # @ print the eliments of array
+echo "${os[1]}"                 # index or element start from zero '0' in array
+echo "${os[0]}"  
+echo "${!os[@]}"                # print indexes of array by '!'
+echo "${#os[@]}"                # print the lenthe by #
+
+save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+ubuntu window kali
+window
+ubuntu
+0 1 2
+3
+----
+
+#! /bin/bash
+
+os=("ubuntu" "window" "kali")   
+os[3]="mac"                     #'mac' is added as 3rd index of array
+
+echo "${os[@]}"                 
+echo "${os[1]}"                
+echo "${os[0]}"  
+echo "${!os[@]}"               
+echo "${#os[@]}"   
+
+save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+ubuntu window kali mac
+window
+ubuntu
+0 1 2 3
+4
+-----------------------
+
+#! /bin/bash
+
+os=("ubuntu" "window" "kali")   
+os[0]="mac"                     # update 'mac' as first index or element
+
+echo "${os[@]}"                 
+echo "${os[1]}"                
+echo "${os[0]}"  
+echo "${!os[@]}"               
+echo "${#os[@]}"                
+
+save
+
+ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+mac window kali
+window
+mac
+0 1 2
+3
+------------
+
+#! /bin/bash
+
+os=("ubuntu" "window" "kali")   
+unset os[2]                      # remove an element 
+
+echo "${os[@]}"                 
+ save
+ 
+ ubuntu@sony-vaio:~/Desktop$ ./hello.sh 
+ubuntu window
+
+--

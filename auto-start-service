@@ -1,0 +1,25 @@
+
+//Bash Script to automatically start a service when it goes down//
+
+vi service-monitor.sh
+
+#!/bin/bash
+TO=mdsaifuddin@gmail.com
+SR=apache2
+ST=stopped
+systemctl  status $SR | grep -i 'running\|stopped' | awk '{print $3}' | while read output;
+do
+echo $output
+if [ "$outpot " == "$ST" ]; then
+  systemctl start $SR
+  echo $SR is up now. | mail -s "$SR is down and restarted now on $(hostname)" $TO
+  else
+  echo "$SR service is running"
+fi
+
+wq;
+chmod +x service-monitor.sh
+# crontab -e
+*/5 * * * * /bin/bash  /home/ubuntu/service-monitor.sh
+
+--

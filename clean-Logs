@@ -1,0 +1,26 @@
+////Bash Script to Clean up the log files in var/log//
+
+vi cleanlog.sh
+
+#!/bin/bash
+
+cd /var/log
+cat /dev/null > messages
+cat /dev/null > wtmp
+ echo "logs cleaned up"
+------------------------------------------------------
+
+//Bash Script to Clean up the log files in var/log/ except last 100 number of lines//
+
+vi cleanlogs2.sh
+
+#!/bin/bash
+
+LINE=100
+
+tail -$LINE messages > msg.temp
+mv msg.temp messages
+cat /dev/null > wtmp
+ echo "all logs cleand up"
+ 
+ ---

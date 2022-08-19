@@ -1,0 +1,24 @@
+//Bash Script to Check Disk Space and send mail Alert//
+
+vi checkdisk-monitor-1.sh
+
+#!/bin/bash
+
+THRESHOLD=90
+
+CURRENT=$( df / | grep / | awk '{ print $5 }' | sed 's/%//g' )
+if [ "$CURRENT" -gt "$THRESHOLD" ] ; then
+
+mail -s 'Disk Space Alert' mdsaifuddin.ek@gmail.com << EOF 
+YOUR ROOT PARTITION REMAINING
+FREE SPACE IS CRITICALLY LOW. USED: $CURRENT%
+
+EOF
+
+fi
+
+wq:
+
+chmod +x checkdisk-monitor-1.sh
+# crontab -e
+@hourly /home/ubuntu/checkdisk-monitor-1.sh

@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo "Checking for zombie processes..."
 
 # List zombie processes
@@ -11,7 +10,7 @@ else
     echo "Zombie processes found:"
     echo "$zombies"
     
-    # Extract and kill parent process IDs (PPID)
+# Extract and kill parent process IDs (PPID)
     echo "$zombies" | awk '{print $2}' | tail -n +2 | while read ppid; do
         echo "Killing parent process ID: $ppid"
         sudo kill -HUP "$ppid"

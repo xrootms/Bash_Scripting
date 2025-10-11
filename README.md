@@ -3,7 +3,7 @@
   <img src="./image/18499070.gif" alt="LEMP Diagram" width="200">
 </p>
 
-<img src="./image/18499070.gif" alt="LEMP Diagram" width="200" align="right" />
+
 
 
 
@@ -20,4 +20,4 @@
 | **Scripting**                | <img src="https://skillicons.dev/icons?i=bash" /> |
 | **Monitoring**               | <img src="https://skillicons.dev/icons?i=prometheus,grafana" />  |
 
-
+<img src="./image/18499070.gif" alt="LEMP Diagram" width="200" align="right" />

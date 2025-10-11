@@ -7,10 +7,8 @@
 
 
 
-
-
+<img src="./image/18499070.gif" alt="LEMP Diagram" width="200" align="right" />
 ## Tools
-
 | Technologies                 | Skills                  |
 | ---------------------------- | ------------------------ |
 | **Cloud & IaC**             | <img src="https://skillicons.dev/icons?i=aws,terraform" />  |
@@ -19,5 +17,3 @@
 | **Container Management**     | <img src="https://skillicons.dev/icons?i=kubernetes,docker" />  |
 | **Scripting**                | <img src="https://skillicons.dev/icons?i=bash" /> |
 | **Monitoring**               | <img src="https://skillicons.dev/icons?i=prometheus,grafana" />  |
-
-<img src="./image/18499070.gif" alt="LEMP Diagram" width="200" align="right" />

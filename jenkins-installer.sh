@@ -13,6 +13,8 @@ yes | sudo apt-get install jenkins
 sleep 30
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
+sleep10
+sudo apt  install docker.io -y
 #echo "Waiting for 30 seconds before installing the Terraform..."
 #wget https://releases.hashicorp.com/terraform/1.13.3/terraform_1.13.3_linux_amd64.zip
 #yes | sudo apt-get install unzip

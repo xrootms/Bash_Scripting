@@ -1,0 +1,47 @@
+#!/bin/bash
+# ----------------------------------------------
+# Uninstall Kubernetes completely from Worker Node, Ubuntu 22.04
+# ----------------------------------------------
+
+set -xe
+
+echo "Step 1: Reset kubeadm cluster info"
+sudo kubeadm reset -f || true
+
+echo "Step 2: Removing Kubernetes directories"
+sudo rm -rf /etc/cni/net.d
+sudo rm -rf /var/lib/cni/
+sudo rm -rf /var/lib/kubelet/*
+sudo rm -rf /etc/kubernetes/
+sudo rm -rf /var/lib/kubernetes/
+sudo rm -rf /var/log/pods /var/log/containers
+
+echo "Step 3: Stop and disable kubelet"
+sudo systemctl stop kubelet || true
+sudo systemctl disable kubelet || true
+sudo rm -f /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+sudo rm -f /etc/systemd/system/kubelet.service
+sudo systemctl daemon-reload
+
+echo "Step 4: Uninstall Kubernetes packages"
+sudo apt-get purge -y kubeadm kubelet kubectl kubernetes-cni || true
+sudo apt-get autoremove -y
+sudo apt-get clean
+
+echo "Step 5: Remove leftover binaries"
+sudo rm -f /usr/bin/kubeadm /usr/bin/kubelet /usr/bin/kubectl
+
+echo "Step 6: Remove network interfaces (if any)"
+sudo ip link delete cni0 2>/dev/null || true
+sudo ip link delete flannel.1 2>/dev/null || true
+
+echo "Step 7 (optional): Remove container runtime data"
+sudo systemctl stop containerd 2>/dev/null || true
+sudo rm -rf /etc/containerd /var/lib/containerd
+
+echo "Step 8: Verification"
+if ! which kubeadm >/dev/null 2>&1 && ! which kubelet >/dev/null 2>&1 && ! which kubectl >/dev/null 2>&1; then
+    echo "Kubernetes successfully removed from this worker node!"
+else
+    echo "Some binaries still exist — check manually."
+fi

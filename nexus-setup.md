@@ -4,12 +4,12 @@
 #!/bin/bash
 
 # Update package manager repositories
-sudo apt-get update
+sudo apt-get update -y
 
 # Install necessary dependencies
 sudo apt-get install -y ca-certificates curl
-echo "Waiting for 30 seconds before installing the jenkins package..."
-sleep 30
+echo "Waiting for 5 seconds before installing the package..."
+sleep 5
 
 # Create directory for Docker GPG key
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -26,11 +26,11 @@ $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
 sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # Update package manager repositories
-sudo apt-get update
+sudo apt-get update -y
 
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin 
-echo "Waiting for 30 seconds before installing the jenkins package..."
-sleep 30
+echo "Waiting for 10 seconds before installing the package..."
+sleep 10
 
 sudo systemctl enable docker
 sudo systemctl start docker

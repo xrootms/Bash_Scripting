@@ -35,3 +35,89 @@ systemctl status docker
 - Monitor the server.
 
 Note : "For Ubuntu production patching, used **apt update** to refresh repositories, **unattended-upgrade** to apply security patches only, check if a reboot is required using /var/run/reboot-required, validate services and applications after patching, and maintain logs for auditing and troubleshooting.
+
+
+### flow
+
+                    ┌──────────────────────┐
+                    │       START          │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │ Check root access    │
+                    └──────────┬───────────┘
+                               │
+                         Is root?
+                        /       \
+                      NO         YES
+                      │           │
+                      ▼           ▼
+                   EXIT      Collect host info
+                                  │
+                                  ▼
+                           Collect OS info
+                                  │
+                                  ▼
+                           Check disk space
+                                  │
+                                  ▼
+                         Check failed services
+                                  │
+                                  ▼
+                         Record current kernel
+                                  │
+                                  ▼
+                    ┌──────────────────────┐
+                    │      apt update      │
+                    └──────────┬───────────┘
+                               │
+                       Did apt update work?
+                         /             \
+                       NO               YES
+                       │                 │
+                       ▼                 ▼
+                 Log error + EXIT   Show available
+                                   package updates
+                                         │
+                                         ▼
+                              Is unattended-upgrades
+                                   installed?
+                                /             \
+                              NO               YES
+                              │                 │
+                              ▼                 │
+                       Install package          │
+                              │                 │
+                       Installation OK?         │
+                         /       \              │
+                       NO         YES            │
+                       │           │             │
+                       ▼           └──────┬──────┘
+                  Log error + EXIT        │
+                                          ▼
+                              Run unattended-upgrade
+                                          │
+                                  Patching successful?
+                                    /          \
+                                  NO            YES
+                                  │              │
+                                  ▼              ▼
+                           Log error + EXIT   Check kernel
+                                                  │
+                                                  ▼
+                                      Check reboot-required
+                                           /          \
+                                         YES           NO
+                                          │             │
+                                          ▼             ▼
+                                   Log "Reboot        Log "No
+                                    required"        reboot"
+                                          │             │
+                                          └──────┬──────┘
+                                                 │
+                                                 ▼
+                                      PATCHING COMPLETED
+                                                 │
+                                                 ▼
+                                           END / LOG

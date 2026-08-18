@@ -43,8 +43,14 @@ echo "Current Kernel: $OLD_KERNEL" | tee -a $LOGFILE
 echo "==========================================" | tee -a $LOGFILE
 
 # Update package metadata
-echo "Updating package repository..." | tee -a $LOGFILE
-apt update >> $LOGFILE 2>&1
+echo "Updating package repository..." | tee -a "$LOGFILE"
+
+if apt update >> "$LOGFILE" 2>&1; then
+    echo "Package repository updated successfully" | tee -a "$LOGFILE"
+else
+    echo "ERROR: apt update failed" | tee -a "$LOGFILE"
+    exit 1
+fi
 
 echo "==========================================" | tee -a $LOGFILE
 

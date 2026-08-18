@@ -61,11 +61,18 @@ apt list --upgradable 2>/dev/null | tee -a $LOGFILE
 echo "==========================================" | tee -a $LOGFILE
 
 # Install security updates package if not present
-if ! dpkg -l | grep -q unattended-upgrades; then
-    echo "Installing unattended-upgrades..." | tee -a $LOGFILE
-    apt install unattended-upgrades -y >> $LOGFILE 2>&1
-fi
 
+if ! dpkg -l | grep -q unattended-upgrades; then
+  echo "Installing unattended-upgrades..." | tee -a "$LOGFILE"
+if apt install unattended-upgrades -y >> "$LOGFILE" 2>&1; then
+  echo "unattended-upgrades installed successfully" | tee -a "$LOGFILE"
+else
+  echo "ERROR: Failed to install unattended-upgrades" | tee -a "$LOGFILE"
+ exit 1
+fi
+else
+  echo "unattended-upgrades is already installed" | tee -a "$LOGFILE"
+fi
 echo "==========================================" | tee -a $LOGFILE
 
 # Apply security patches
